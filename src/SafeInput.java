@@ -4,10 +4,10 @@ public class SafeInput {
 
     public static String getNonZeroLenString(Scanner pipe, String prompt)
     {
-        String retString = ""; // Set this to zero length. Loop runs until it isn't
+        String retString = "";
         do
         {
-            System.out.print("\n" +prompt + ": "); // show prompt add space
+            System.out.print("\n" +prompt + ": ");
             retString = pipe.nextLine();
         }while(retString.length() == 0);
 
@@ -89,5 +89,27 @@ public class SafeInput {
         }
         while (!done);
         return result;
+    }
+    public static boolean getYNConfirm(Scanner pipe, String prompt) {
+        String result;
+        do {
+            System.out.println(prompt);
+            result = pipe.nextLine().trim().toLowerCase();
+        } while (!result.equals("y") && !result.equals("n"));
+        return result.equals("y");
+    }
+    public static String getRegExString(Scanner pipe, String prompt, String regEx) {
+        String value = "";
+        boolean gotAValue = false;
+        do {
+            System.out.print(prompt + ": ");
+            value = pipe.nextLine();
+            if (value.matches(regEx)) {
+                gotAValue = true;
+            } else {
+                System.out.println("\nInvalid input: " + value);
+            }
+        }while(!gotAValue);
+        return value;
     }
 }
