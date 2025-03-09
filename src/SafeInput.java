@@ -31,4 +31,21 @@ public class SafeInput {
         while (!done);
         return result;
     }
+    public static double getDouble(Scanner pipe, String prompt) {
+        double result = 0;
+        boolean done = false;
+        String trash = "";
+        do {
+            System.out.print(prompt);
+            if (pipe.hasNextDouble()) {
+                result = pipe.nextDouble();
+                done = true;
+            } else {
+                trash = pipe.nextLine();
+                System.out.println("Invalid input: " + trash + ", Please enter a number.");
+            }
+        }
+        while (!done);
+        return result;
+    }
 }
