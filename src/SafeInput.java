@@ -14,5 +14,21 @@ public class SafeInput {
         return retString;
 
     }
-
+    public static int getInt(Scanner pipe, String prompt) {
+        int result = 0;
+        boolean done = false;
+        String trash = "";
+        do {
+            System.out.print(prompt);
+            if (pipe.hasNextInt()) {
+                result = pipe.nextInt();
+                done = true;
+            } else {
+                trash = pipe.nextLine();
+                System.out.println("Invalid input: " + trash + ", Please enter an integer.");
+            }
+        }
+        while (!done);
+        return result;
+    }
 }
