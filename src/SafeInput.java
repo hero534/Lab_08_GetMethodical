@@ -69,4 +69,25 @@ public class SafeInput {
         while (!done);
         return result;
     }
+    public static double getRangedDouble(Scanner pipe, String prompt, double lo, double hi) {
+        double result = 0;
+        boolean done = false;
+        String trash = "";
+        do {
+            System.out.print(prompt + "[" + lo + " - " + hi + "]: ");
+            if (pipe.hasNextDouble()) {
+                result = pipe.nextDouble();
+                if (result >= lo && result <= hi) {
+                    done = true;
+                } else {
+                    System.out.println("You must enter a value in range [" + lo + " - " + hi + "]: " + result);
+                }
+            } else {
+                trash = pipe.nextLine();
+                System.out.println("You must enter a int between [" + lo + " - " + hi + "]: " + trash);
+            }
+        }
+        while (!done);
+        return result;
+    }
 }
