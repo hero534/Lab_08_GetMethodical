@@ -112,4 +112,5 @@ public class SafeInput {
         }while(!gotAValue);
         return value;
     }
+
 }
