@@ -112,5 +112,28 @@ public class SafeInput {
         }while(!gotAValue);
         return value;
     }
+    public static void prettyHeader(String msg) {
+        int msgLength = msg.length();
+        int spaces = (60 - msgLength - 6) / 2;
 
+        for (int i = 0; i < 60; i++) {
+            System.out.print("*");
+        }
+        System.out.println();
+
+        System.out.print("***");
+        for (int i = 0; i < spaces; i++) {
+            System.out.print(" ");
+        }
+        System.out.print(msg);
+        for (int i = 0; i < spaces; i++) {
+            System.out.print(" ");
+        }
+        System.out.println("***");
+
+        for (int i = 0; i < 60; i++) {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
 }
